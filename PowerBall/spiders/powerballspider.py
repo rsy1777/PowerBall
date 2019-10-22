@@ -17,8 +17,8 @@ from scrapy.selector import Selector
 class PowerBall_Spider(scrapy.Spider):
 
     name = "PowerBall"  #spider 이름
-    allowed_domains = ["m.nlotto.co.kr"]   #크롤링할 최상위 도메인
-    #start_urls = ["http://m.nlotto.co.kr/gameInfo.do?method=powerWinNoList&nowPage=1&searchDate=20181217&calendar=2018-12-17&sortType=num"]  #실제 크롤링할 주소     
+    allowed_domains = ["dhlottery.co.kr"]   #크롤링할 최상위 도메인
+    #start_urls = ["http://m.nlotto.co.kr/gameInfo.do?method=powerWinNoList&nowPage=1&searchDate=20180526&calendar=2018-05-26&sortType=num"]  #실제 크롤링할 주소     
 
     def start_requests(self):
         pageNum = 1
@@ -29,7 +29,7 @@ class PowerBall_Spider(scrapy.Spider):
  
         for day in date:            
             for i in range(30, pageNum, -1):
-                yield scrapy.Request("http://m.nlotto.co.kr/gameInfo.do?method=powerWinNoList&nowPage={0}&searchDate={1}".format(i, str(day.strftime('%Y%m%d'))),
+                yield scrapy.Request("http://www.dhlottery.co.kr/gameInfo.do?method=powerWinNoList&nowPage".format(i, str(day.strftime('%Y%m%d'))),
                                         self.parse)
 
 
